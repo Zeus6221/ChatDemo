@@ -1,0 +1,25 @@
+<div class="loginContainer">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-3">
+        <div class="avatarFrameOffline my-5"><img src="../../assets/img/generic_avatar.png" class="avatarImage image-fluid"></div>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col-md-6">
+        <div class="text-center">
+          <h3>iniciar sesión</h3>
+        </div>
+        <p *ngIf="operation=='register'">Tienes cuenta? <a (click)="operation = 'login'">Login</a></p>
+        <p *ngIf="operation=='login'">No tienes cuenta? <a (click)="operation = 'register'">Resgistrarse</a></p>
+        <div class="borderedContainer">
+          <input class="form-control" type="email" placeholder="ingrese email">
+          <input class="form-control" type="password" placeholder="ingrese contraseña">
+          <input class="form-control" type="text" placeholder="ingrese nickname" *ngIf="operation=='register'">
+        </div>
+        <div class="text-center my-5" *ngIf="operation=='login'"><a class="btn btn-primary">Iniciar Sesión</a></div>
+        <div class="text-center my-5" *ngIf="operation=='register'"><a class="btn btn-primary">Registrarse</a></div>
+      </div>
+    </div>
+  </div>
+</div>
