@@ -2,42 +2,43 @@
   <div class="container pt-5">
     <div class="row">
       <div class="col-md-3">
-        <div class="avatarFrameonline">
-          <img src="../../assets/img/generic_avatar.png" class="avatarImage img-fluid" alt="">
+        <div class="avatarFrameonline" *ngIf="user">
+          <img [src]="croppedImage || user.avatar || '../../assets/img/generic_avatar.png'" class="avatarImage img-fluid">
         </div>
         <hr>
         <div>
           <span>Cambiar Foto</span><br>
-          <label class="custom-file-upload" for="">
-            <input type="file">
+          <label class="custom-file-upload" for="file">
+            <input type="file" (change)="fileChangeEvent($event)">
             Subir Avatar
           </label>
         </div>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-9" *ngIf="user">
+        <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+          [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()"
+          (loadImageFailed)="loadImageFailed()">
+        </image-cropper>
         <div>
           <label fixed>Nick</label>
-          <input type="text" class="form-control">
-        </div>
-        <div>
-          <label fixed>Subnick</label>
-          <input type="text" class="form-control">
+          <input [(ngModel)]="user.Nick" type="text" class="form-control">
         </div>
         <div>
           <label fixed>Email</label>
-          <input type="email" disabled class="form-control">
+          <input [(ngModel)]="user.Email" type="email" disabled class="form-control">
         </div>
         <div>
           <label fixed>Status</label>
-          <select class="form-control">
-            <option value="online">Conectado</option>
-            <option value="away">ausente</option>
-            <option value="busy">ocupado</option>
-            <option value="appear_offline">aparecer desconectado</option>
+          <select [(ngModel)]="user.Status" class="form-control">
+            <option value="Online">Conectado</option>
+            <option value="Away">ausente</option>
+            <option value="Busy">ocupado</option>
+            <option value="AppearOffline">aparecer desconectado</option>
+            <option value="Offline">desconectado</option>
           </select>
         </div>
         <hr>
-        <button class="btn btn-primary btn-block">Guardar</button>
+        <button (click)="saveSettings()" class="btn btn-primary btn-block">Guardar</button>
       </div>
     </div>
   </div>
