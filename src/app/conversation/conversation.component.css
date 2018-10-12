@@ -3,9 +3,65 @@
     background-size: 100%;
     background-repeat: no-repeat;
   }
-#homeAvatarPicture{
+  .conversationSidebar {
+    padding: 30px;
+    padding-bottom: 0;
+    position: relative;
+  }
+  .vh25 {
+    height: 25vh;
+  }
+  .vh30 {
+    height: 30vh;
+  }
+  .vh55 {
+    height: 55vh;
+  }
+  #messageToolBar {
+    border: 2px solid #cfd1d5;
+    padding: 5px;
+    border-top: 0px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e9ebf0+50,f1f3f8+87,fff9f9+100 */
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #e9ebf0 50%, #f1f3f8 87%, #fff9f9 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#e9ebf0 50%,#f1f3f8 87%,#fff9f9 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffffff 0%,#e9ebf0 50%,#f1f3f8 87%,#fff9f9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fff9f9',GradientType=0 ); /* IE6-9 */
+  }
+  .backgroundTool{
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #e9ebf0 50%, #f1f3f8 87%, #fff9f9 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#e9ebf0 50%,#f1f3f8 87%,#fff9f9 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffffff 0%,#e9ebf0 50%,#f1f3f8 87%,#fff9f9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  }
+  #messageToolBar > .item {
+    display: inline-block;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+  #messageToolBar > .item > .tool {
+    height: 24px;
+    margin-right: 4px;
+  }
+  span.friendName {
+    font-size: 2em;
+  }
+  .overscroll {
+    overflow: scroll;
+  }
+  .pabo10 {
+    padding-bottom: 10px;
+  }
+  .avatarImage {
     max-width: 100px;
-}
-.containerMessages{
-    height: 60vh;
-}
+  }
+  .maxwi300{
+    max-width: 300px;
+  }
+  .attached {
+    cursor: default;
+    padding: 1%;
+  }
+  .pointer{
+    cursor: pointer;
+  }

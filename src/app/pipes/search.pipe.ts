@@ -7,7 +7,7 @@ export class SearchPipe implements PipeTransform {
 
   transform(value, args: string): any {
 
-    console.log(JSON.stringify(value));
+
 
     if (!value) {
       return;
@@ -16,6 +16,11 @@ export class SearchPipe implements PipeTransform {
     if (!args) {
       return value;
     }
+
+    console.log(JSON.stringify(value));
+    console.log(JSON.stringify(value.length));
+    console.log(JSON.stringify(args));
+
 
     args = args.toLowerCase();
 

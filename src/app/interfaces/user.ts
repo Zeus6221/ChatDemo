@@ -1,8 +1,13 @@
+import { Status } from "./status.enum";
+
 export interface User {
-    nick: string;
-    subnick?: string;
-    age?: number;
-    email: string;
-    friend: boolean;
-    uid: any;
+    Uid: any;
+    Nick: string;
+    Avatar: string;
+    Email: string;
+    Age?: number;
+    Friend?: boolean;
+    Password?: string;
+    active?: boolean;
+    status?: Status;
 }
