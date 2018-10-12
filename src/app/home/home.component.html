@@ -15,6 +15,7 @@
             <span>
               < Escribe un mensaje personal>
             </span>
+            <a (click)="logout()">logout</a>
           </div>
         </div>
       </div>
@@ -31,15 +32,16 @@
       </div>
     </div>
     <hr>
-    <b>amigos ({{friends.length}}/{{friends.length}})</b>
-    <div class="disblo mb-3" *ngFor="let user of friends | search:query; let i = index">
+    <div *ngIf="friends">
+      <b>amigos ({{friends.length}}/{{friends.length}})</b>
+      <div class="disblo mb-3" *ngFor="let user of friends | search:query; let i = index">
 
-      <span routerLink="/conversation/user.uid">
-        <img src="../../assets/img/logo_live_online.png" class="icon" alt="">
-        <b>{{user.nick}}</b> -
-        {{user.subnick ||'No subnick'}}
-        <small>{{user.email}}</small>
-      </span>
+        <span routerLink="/conversation/{{user.Uid}}">
+          <img src="../../assets/img/logo_live_online.png" class="icon" alt="">
+          <b>{{user.Nick}}</b>
+          <small>{{user.Email}}</small>
+        </span>
+      </div>
     </div>
   </div>
 </div>
