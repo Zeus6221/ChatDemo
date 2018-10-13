@@ -1,53 +1,75 @@
-<div class="conversationContainer">
+<div class="conversationContainer" [ngClass]="{shaker:shake}">
     <div class="row my-5">
-        <div class="col-md-3 my-5">
-            <div class="avatarFrameonline" id="homeAvatarPicture">
-                <img src="../../assets/img/generic_avatar.png" class="avatarImage img-fluid" alt="">
-            </div>
-        </div>
-        <div class="col-md-9 containerMessages my-5">
-            <p>Freddy dice:</p>
-
-            <div class="col">
-                <i>
-                    <h3>
-                        <span class="badge badge-pill badge-secondary">Hola amigo como estas?</span>
-                    </h3>
-                </i>
-            </div>
-
-
-            <div class="col text-right">
-                <i>
-                    <p>Ruben dice:</p>
-                    <h3><span class="badge badge-pill badge-info">Muy bien gracias.</span></h3>
-                </i>
-            </div>
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="col-md-3">
-                <div class="avatarFrameonline" id="homeAvatarPicture">
-                    <img src="../../assets/img/generic_avatar.png" class="avatarImage img-fluid" alt="">
+        <div class="col-sm-3 maxwi300">
+            <div class="conversationSidebar">
+                <div class="vh30">
+                    <div class="avatarFrameonline">
+                        <img src="../../assets/img/generic_avatar.png" class="avatarImage img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="vh30"></div>
+                <div class="vh25">
+                    <div class="avatarFrameonline">
+                        <img src="../../assets/img/generic_avatar.png" class="avatarImage img-fluid" alt="">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
-            <div>
-                <textarea class="form-control" cols="30" rows="5"></textarea>
+        <div class="col-sm-9">
+            <br />
+            <span class="friendName" *ngIf="friend">{{friend.Nick}} (online)</span>
+            <hr />
+            <div class="vh45 pabo10 overscroll" id="messageArea">
+                <ng-container *ngFor="let m of conversation">
+                    <div *ngIf="m.Type == 'text'">
+                        <div *ngIf="m.Sender==user.Uid" class="text-right">
+                            <i>
+                                <b>{{getUserNickById(m.Sender)}}</b> dice:
+                                <h3>
+                                    <br /><span class="badge badge-pill badge-info">{{m.TextMessage}}</span>
+                                </h3>
+                            </i>
+                        </div>
+                        <div *ngIf="m.Sender!=user.Uid">
+                            <b>{{getUserNickById(m.Sender)}}</b> dice:
+                            <br />
+                            <h3>
+                                <span class="badge badge-pill badge-secondary">{{m.TextMessage}}</span>
+                            </h3>
+                        </div>
+                    </div>
+                </ng-container>
             </div>
-            <div>
-                <img src="../../assets/img/zumbido.png" class="emoticom">
-                <img src="../../assets/img/zumbido.png" class="emoticom">
-                <img src="../../assets/img/zumbido.png" class="emoticom">
-                <button class="btn btn-primary mx-3">Enviar</button>
-                <label class="custom-file-upload" for="">
-                    <input type="file">
-                    selecionar imagen
-                </label>
+
+            <div class="messageControlsContainer">
+                <div class="d-inline">
+                    <textarea [(ngModel)]="message.TextMessage" class="form-control" (keyup.enter)="sendMessage()" cols="30"
+                        rows="10">
+                    </textarea>
+                </div>
+                <div id="messageToolBar">
+                    <div class="item">
+                        <img src="assets/img/icons/regular_smile.gif" class="tool">
+                        <i name="caret-down"></i>
+                    </div>
+                    <div class="item">
+                        <img src="assets/img/icons/wink_smile.gif" class="tool">
+                        <i name="caret-down"></i>
+                    </div>
+                    <div class="item">
+                        <img (click)="sendZumbido()" src="assets/img/zumbido.png" class="tool">
+                    </div>
+                    <a class="btn btn-primary btn-sm marri10" accept="image/*" (click)="sendMessage()">Enviar</a>
+                    <label class="custom-file-upload">
+                        <input type="file">
+                        <i name="
+                            image"></i>
+                        Seleccionar Imagen
+                    </label>
+                </div>
             </div>
         </div>
     </div>
+
+
 </div>
