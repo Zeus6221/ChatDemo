@@ -1,0 +1,37 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Nueva solicitud</h4>
+      <button type="button" class="close" (click)="close()">&times;</button>
+    </div>
+    <div class="modal-body" style="height: auto" *ngIf="senderUser">
+      <div class="row">
+        <div class="col-md-3">
+          <img [src]="senderUser.Avatar" class="img-fluid">
+        </div>
+        <div class="col-md-9">
+          <b>{{senderUser.Nick}}</b><br>
+          {{senderUser.Email}}<br>
+          <small>Te ha enviado eta solicitud de amistad</small><br>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Deseas agregar a esta persona?</h4>
+          <br>
+          <input type="radio" name="addToMsn" id="add-yes" [(ngModel)]="this.currentRequest.Status" value="acepted">
+          <label for="add-yes">Si quiero agregarlo</label><br>
+          <input type="radio" name="addToMsn" id="add-no" [(ngModel)]="this.currentRequest.Status" value="rejected">
+          <label for="add-no">No quiero agregarlo</label><br>
+          <input type="radio" name="addToMsn" id="add-later" [(ngModel)]="this.currentRequest.Status" value="later">
+          <label for="add-later">Decido más tarde.</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="confirm()">OK</button>
+      <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</div>
