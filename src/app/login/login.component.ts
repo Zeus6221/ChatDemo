@@ -53,8 +53,8 @@ export class LoginComponent implements OnInit {
             Uid: response.user.uid,
             Nick: response.user.displayName,
             Avatar: response.user.photoURL,
-            active: true,
-            status: Status.Online
+            Active: true,
+            Status: Status.Online
           }
           this.userService.add(user);
         }

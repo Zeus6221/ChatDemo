@@ -27,7 +27,11 @@ export class UserService {
   }
   setAvatar(user: User) {
     return this.angularFirestoreDatabase
-      .object('/users/' + user.Uid + '/avatar')
+      .object('/users/' + user.Uid + '/Avatar')
       .set(user.Avatar);
+  }
+  addFriend(userId, friendId) {
+    this.angularFirestoreDatabase.object('users/' + userId + '/Friends/' + friendId).set(friendId);
+    return this.angularFirestoreDatabase.object('users/' + friendId + '/Friends/' + userId).set(userId);
   }
 }

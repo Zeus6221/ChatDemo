@@ -6,9 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SearchPipe implements PipeTransform {
 
   transform(value, args: string): any {
-
-    console.log(JSON.stringify(value));
-
     if (!value) {
       return;
     }

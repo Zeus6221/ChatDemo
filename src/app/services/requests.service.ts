@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { FrienshipRequest } from '../interfaces/Request';
 
 @Injectable({
   providedIn: 'root'
@@ -8,21 +9,22 @@ export class RequestsService {
 
   constructor(private angularFireDatabase: AngularFireDatabase) { }
 
-  createRequest(request) {
-    const cleanEmail = request.receiver_email.replace(',', ',');
+  createRequest(request: FrienshipRequest) {
+    const cleanEmail = request.Receiver_email.replace('.', ',');
     return this.angularFireDatabase
-      .object('requests/' + cleanEmail + '/' + request.senderId)
+      .object('requests/' + cleanEmail + '/' + request.SenderId)
       .set(request);
   }
-  setRequestStatus(request) {
-    const cleanEmail = request.receiver_email.replace(',', ',');
+
+  setRequestStatus(request: FrienshipRequest) {
+    const cleanEmail = request.Receiver_email.replace('.', ',');
     return this.angularFireDatabase
-      .object('requests/' + cleanEmail + '/' + request.senderId)
+      .object('requests/' + cleanEmail + '/' + request.SenderId)
       .update(request);
   }
 
   getRequestsForEmail(email) {
-    const cleanEmail = email.replace(',', ',');
+    const cleanEmail = email.replace('.', ',');
     return this.angularFireDatabase.list('requests/' + cleanEmail)
   }
 }

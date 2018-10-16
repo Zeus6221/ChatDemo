@@ -6,8 +6,10 @@ export interface User {
     Avatar: string;
     Email: string;
     Age?: number;
-    Friend?: boolean;
+    IsFriend?: boolean;
     Password?: string;
-    active?: boolean;
-    status?: Status;
+    Active?: boolean;
+    Status?: Status;
+    Friends?: any;
+
 }
